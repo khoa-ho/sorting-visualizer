@@ -1,4 +1,4 @@
-package edu.grinnell.sortingvisualizer;
+package edu.grinnell.sortingvisualizer.rendering;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import javax.swing.JPanel;
+
+import edu.grinnell.sortingvisualizer.audio.NoteIndices;
 
 @SuppressWarnings("serial")
 public class ArrayPanel extends JPanel {
