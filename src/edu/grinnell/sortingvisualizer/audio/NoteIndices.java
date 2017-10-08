@@ -1,4 +1,4 @@
-package edu.grinnell.sortingvisualizer;
+package edu.grinnell.sortingvisualizer.audio;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +8,7 @@ import java.util.Collections;
  * the various sorting algorithms in the program.
  */
 public class NoteIndices {
-    
+
     private ArrayList<Integer> indices;
     private ArrayList<Integer> highlightedNotes;
 
