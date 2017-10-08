@@ -2,7 +2,6 @@ package edu.grinnell.sortingvisualizer.sorts;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 import edu.grinnell.sortingvisualizer.events.CompareEvent;
 import edu.grinnell.sortingvisualizer.events.CopyEvent;
@@ -22,8 +21,8 @@ public class Sorts {
         for (int i = 0; i < l.size(); i++) {
             int lowestIndex = i;
             for (int j = i; j < l.size(); j++) {
+                events.add(new CompareEvent<>(j, lowestIndex));
                 if (l.get(j).compareTo(l.get(lowestIndex)) < 0) {
-                    events.add(new CompareEvent<>(j, lowestIndex));
                     lowestIndex = j;
                 }
             }
@@ -36,8 +35,9 @@ public class Sorts {
     public static <T extends Comparable<T>> List<SortEvent<T>> insertionSort(ArrayList<T> l) {
         List<SortEvent<T>> events = new ArrayList<SortEvent<T>>();
         for (int i = 0; i < l.size(); i++) {
-            for (int j = i; j > 0 && l.get(j - 1).compareTo(l.get(j)) > 0; j--) {
-                events.add(new CompareEvent<>(j - 1, j));
+            int j = i;
+            events.add(new CompareEvent<>(j - 1, j));
+            for (j = i; j > 0 && l.get(j - 1).compareTo(l.get(j)) > 0; j--) {
                 swap(l, j - 1, j);
                 events.add(new SwapEvent<>(j - 1, j));
             }
@@ -51,8 +51,8 @@ public class Sorts {
         while (!isSorted) {
             isSorted = true;
             for (int i = 0; i < l.size() - 1; i++) {
+                events.add(new CompareEvent<>(i, i + 1));
                 if (l.get(i).compareTo(l.get(i + 1)) > 0) {
-                    events.add(new CompareEvent<>(i, i + 1));
                     isSorted = false;
                     swap(l, i, i + 1);
                     events.add(new SwapEvent<>(i, i + 1));
@@ -73,27 +73,19 @@ public class Sorts {
         int k = 0;
 
         while (i < mid && j < hi) {
+            events.add(new CompareEvent<>(i, j));
             if (l.get(i).compareTo(l.get(j)) < 1) {
-                events.add(new CompareEvent<>(i, j));
-                temp[k] = l.get(i);
-                i++;
+                temp[k++] = l.get(i++);
             } else {
-                events.add(new CompareEvent<>(i, j));
-                temp[k] = l.get(j);
-                j++;
+                temp[k++] = l.get(j++);
             }
-            k++;
         }
         while (i < mid) {
-            temp[k] = l.get(i);
-            k++;
-            i++;
+            temp[k++] = l.get(i++);
         }
 
         while (j < hi) {
-            temp[k] = l.get(j);
-            k++;
-            j++;
+            temp[k++] = l.get(j++);
         }
 
         for (int h = 0; h < temp.length; h++) {
@@ -128,8 +120,8 @@ public class Sorts {
             T pivot = l.get(hi);
             int i = (lo - 1);
             for (int j = lo; j < hi; j++) {
+                events.add(new CompareEvent<>(j, hi));
                 if (l.get(j).compareTo(pivot) <= 0) {
-                    events.add(new CompareEvent<>(j, hi));
                     i++;
                     swap(l, i, j);
                     events.add(new SwapEvent<>(i, j));
