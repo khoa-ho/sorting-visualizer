@@ -35,7 +35,7 @@ public class ArrayPanel extends JPanel {
         ArrayList<Integer> indices = notes.getNotes();
         int step = (255 - 12) / notes.getNotes().size();
         if (notes.isHighlighted(barIndex)) {
-            g.setColor(new Color(255, 102, 0));
+            g.setColor(new Color(139, 63, 39));
         } else {
             g.setColor(new Color(35, 139, 12 + indices.get(barIndex) * step));
         }
