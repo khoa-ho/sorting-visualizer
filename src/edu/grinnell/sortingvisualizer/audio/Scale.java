@@ -4,6 +4,9 @@ import javax.sound.midi.MidiChannel;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.MidiUnavailableException;
 import javax.sound.midi.Synthesizer;
+/***
+ * This class implements a scale of notes to be played.
+ */
 
 public class Scale {
     /** The (MIDI) note values of this scale. */
