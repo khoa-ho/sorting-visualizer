@@ -15,13 +15,11 @@ public class CopyEvent<T extends Comparable<T>> implements SortEvent<T> {
     /***
      * This is the constructor method for a CopyEvent object.
      * 
-     * @param value,
-     *            a to-be-copied java object
-     * @param destId,
-     *            a natural number which is the position where the copy of value is
-     *            in the destination array list
-     * @return a CopyEvent object, with its two fields set to the two input values,
-     *         respectively
+     * @param value
+     *            a to-be-copied Comparable object
+     * @param destId
+     *            the index of the destination position in the array list
+     * @return a CopyEvent object
      */
     public CopyEvent(T value, int destId) {
         this.value = value;
@@ -29,9 +27,9 @@ public class CopyEvent<T extends Comparable<T>> implements SortEvent<T> {
     }
 
     /***
-     * Apply this current CopyEvent object to a given array list.
+     * Applies this current CopyEvent object to a given array list
      * 
-     * @param arr,
+     * @param arr
      *            an array list
      */
     public void apply(ArrayList<T> arr) {
@@ -39,10 +37,10 @@ public class CopyEvent<T extends Comparable<T>> implements SortEvent<T> {
     }
 
     /***
-     * Get the affected index in the destination array list of a copy event.
+     * Gets the affected index in the destination array list of a copy event
      * 
-     * @return an integer array list of the index where the copied value is in the
-     *         destination array list
+     * @return an integer array list of the index where the copied value in the
+     *         destination array list is at
      */
     public List<Integer> getAffectedIndices() {
         List<Integer> list = new ArrayList<Integer>();
@@ -51,9 +49,9 @@ public class CopyEvent<T extends Comparable<T>> implements SortEvent<T> {
     }
     
     /***
-     * Answer the question that whether a CopyEvent object is emphasized.
+     * Checks whether a CopyEvent object is emphasized
      * 
-     * @return true, a boolean value
+     * @return true by default
      */
     public boolean isEmphasized() {
         return true;
