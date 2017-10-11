@@ -50,9 +50,9 @@ public class CompareEvent<T extends Comparable<T>> implements SortEvent<T> {
     }
 
     /***
-     * Answers the question that whether a CompareEvent object is emphasized
+     * Checks whether a CompareEvent object is emphasized
      * 
-     * @return false, a boolean value
+     * @return false by default
      */
     public boolean isEmphasized() {
         return false;
