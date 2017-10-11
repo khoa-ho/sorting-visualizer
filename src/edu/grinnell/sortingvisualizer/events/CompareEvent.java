@@ -15,12 +15,12 @@ public class CompareEvent<T extends Comparable<T>> implements SortEvent<T> {
     /***
      * This is the constructor method for a CompareEvent object.
      * 
-     * @param index1,
+     * @param index1
      *            a natural number
-     * @param index2,
+     * @param index2
      *            a natural number
-     * @return a CompareEvent object, with its two fields set to the two given
-     *         integers, which are the two indices of the to-be-compared elements
+     * @return a CompareEvent object with its two fields set to the two given
+     *         integers, which are indices of the to-be-compared elements
      */
     public CompareEvent(int index1, int index2) {
         this.index1 = index1;
@@ -28,9 +28,9 @@ public class CompareEvent<T extends Comparable<T>> implements SortEvent<T> {
     }
 
     /***
-     * Apply this current CompareEvent object to a given array list.
+     * Applies this current CompareEvent object to a given array list
      * 
-     * @param arr,
+     * @param arr
      *            an array list
      */
     public void apply(ArrayList<T> arr) {
@@ -38,9 +38,9 @@ public class CompareEvent<T extends Comparable<T>> implements SortEvent<T> {
     }
 
     /***
-     * Get the affected indices of a comparison event.
+     * Gets the affected indices of a comparison event
      * 
-     * @return an integer array list of the indices of elements that were compared
+     * @return indices of the elements that were compared
      */
     public List<Integer> getAffectedIndices() {
         List<Integer> list = new ArrayList<Integer>();
@@ -50,7 +50,7 @@ public class CompareEvent<T extends Comparable<T>> implements SortEvent<T> {
     }
 
     /***
-     * Answer the question that whether a CompareEvent object is emphasized.
+     * Answers the question that whether a CompareEvent object is emphasized
      * 
      * @return false, a boolean value
      */
