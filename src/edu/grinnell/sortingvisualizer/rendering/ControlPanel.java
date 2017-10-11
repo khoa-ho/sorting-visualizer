@@ -174,7 +174,7 @@ public class ControlPanel extends JPanel {
                             e.apply(l);
                             List<Integer> affectedIndices = e.getAffectedIndices();
                             for (int i = 0; i < affectedIndices.size(); i++) {
-                                scale.playNote(affectedIndices.get(i), e.isEmphasized());
+                                scale.playNote(l.get(affectedIndices.get(i)), e.isEmphasized());
                                 panel.getNoteIndices().highlightNote(affectedIndices.get(i));
                             }
                             panel.repaint();
