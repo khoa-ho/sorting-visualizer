@@ -15,12 +15,12 @@ public class SwapEvent<T extends Comparable<T>> implements SortEvent<T> {
     /***
      * This is the constructor method for a SwapEvent object.
      * 
-     * @param index1,
+     * @param index1
      *            a natural number
-     * @param index2,
+     * @param index2
      *            a natural number
-     * @return a SwapEvent object, with its two fields set to the two given
-     *         integers, which are the two indices of the to-be-swapped elements
+     * @return a SwapEvent object with its two fields set to the two given
+     *         integers, which are indices of the to-be-swapped elements
      */
     public SwapEvent(int index1, int index2) {
         this.index1 = index1;
@@ -28,9 +28,9 @@ public class SwapEvent<T extends Comparable<T>> implements SortEvent<T> {
     }
 
     /***
-     * Apply this current SwapEvent object to a given array list.
+     * Applies this current SwapEvent object to a given array list
      * 
-     * @param arr,
+     * @param arr
      *            an array list
      */
     public void apply(ArrayList<T> arr) {
@@ -40,7 +40,7 @@ public class SwapEvent<T extends Comparable<T>> implements SortEvent<T> {
     }
     
     /***
-     * Get the affected indices of a swap event.
+     * Gets the affected indices of a swap event
      * 
      * @return an integer array list of the indices of elements that were swapped
      */
@@ -51,9 +51,9 @@ public class SwapEvent<T extends Comparable<T>> implements SortEvent<T> {
         return list;
     }
     /***
-     * Answer the question that whether a SwapEvent object is emphasized.
+     * Checks whether a SwapEvent object is emphasized
      * 
-     * @return true, a boolean value
+     * @return true by default
      */
     public boolean isEmphasized() {
         return true;
