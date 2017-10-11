@@ -17,7 +17,7 @@ public class NoteIndices {
      *            the size of the scale object that these indices map into
      */
     public NoteIndices(int n) {
-        indices = new ArrayList<Integer>();
+        initializeAndShuffle(n);
         highlightedNotes = new ArrayList<Integer>();
     }
 
