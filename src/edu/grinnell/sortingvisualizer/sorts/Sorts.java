@@ -10,7 +10,7 @@ import edu.grinnell.sortingvisualizer.events.SwapEvent;
 
 /***
  * This is a class that implements five kinds of sorting algorithms: selection
- * sort, insertion sort, merge sort, quick sort and bubble sort.
+ * sort, insertion sort, bubble sort, merge sort, and quick sort.
  * 
  * @author zhanghon hokhoa
  *
@@ -18,14 +18,13 @@ import edu.grinnell.sortingvisualizer.events.SwapEvent;
 public class Sorts {
 
     /***
-     * This method swaps two elements in the given array list with index i and index
-     * j, relatively.
+     * Swaps the two elements with index i and j in the given array list
      * 
-     * @param l,
+     * @param l
      *            an array list
-     * @param i,
+     * @param i
      *            a natural number
-     * @param j,
+     * @param j
      *            a natural number
      */
     private static <T> void swap(ArrayList<T> l, int i, int j) {
@@ -35,12 +34,11 @@ public class Sorts {
     }
 
     /***
-     * This method implements selection sort for array lists
+     * Implements selection sort
      * 
-     * @param l,
+     * @param l
      *            an array list
-     * @return a list of events that logs all the important events happening in a
-     *         selection sorting process
+     * @return a list of important events during the sorting process
      */
     public static <T extends Comparable<T>> List<SortEvent<T>> selectionSort(ArrayList<T> l) {
         List<SortEvent<T>> events = new ArrayList<SortEvent<T>>();
@@ -59,12 +57,11 @@ public class Sorts {
     }
 
     /***
-     * This method implements insertion sort for array lists
+     * Implements insertion sort
      * 
-     * @param l,
+     * @param l
      *            an array list
-     * @return a list of events that logs all the important events happening in a
-     *         insertion sorting process
+     * @return a list of important events during the sorting process
      */
     public static <T extends Comparable<T>> List<SortEvent<T>> insertionSort(ArrayList<T> l) {
         List<SortEvent<T>> events = new ArrayList<SortEvent<T>>();
@@ -81,12 +78,11 @@ public class Sorts {
     }
 
     /***
-     * This method implements bubble sort for array lists
+     * Implements bubble sort
      * 
-     * @param l,
+     * @param l
      *            an array list
-     * @return a list of events that logs all the important events happening in a
-     *         bubble sorting process
+     * @return a list of important events during the sorting process
      */
     public static <T extends Comparable<T>> List<SortEvent<T>> bubbleSort(ArrayList<T> l) {
         List<SortEvent<T>> events = new ArrayList<SortEvent<T>>();
@@ -106,16 +102,14 @@ public class Sorts {
     }
 
     /***
-     * This method merges two sorted parts of an array list into one sorted part.
+     * Merges two sorted parts of an array list into one sorted part
      * 
-     * @param l,
+     * @param l
      *            an array list
-     * @param lo,
-     *            a natural number, which is the index of the starting element to be
-     *            sorted (inclusive)
-     * @param mid,
-     *            a natural number, which is the index of an element that is in the
-     *            middle of the two sub-array-lists to be sorted
+     * @param lo
+     *            the index of the starting element to be sorted (inclusive)
+     * @param mid
+     *            the index of the first element of the 2nd half of the array
      * @param hi,
      *            a natual number, which is the index of the last element to be
      *            sorted (exclusive)
@@ -140,10 +134,10 @@ public class Sorts {
                 temp[k++] = l.get(j++);
             }
         }
+        
         while (i < mid) {
             temp[k++] = l.get(i++);
         }
-
         while (j < hi) {
             temp[k++] = l.get(j++);
         }
@@ -156,20 +150,16 @@ public class Sorts {
     }
 
     /***
-     * This method implements merge sort for array lists
+     * Implements merge sort
      * 
-     * @param l,
+     * @param l
      *            an array list
+     * @param lo
+     *            the index of the starting element to be sorted (inclusive)
+     * @param hi
+     *            the index of the last element to be sorted (exclusive)
      * 
-     * @param lo,
-     *            a natural number, which is the index of the starting element to be
-     *            sorted (inclusive)
-     * @param hi,
-     *            a natual number, which is the index of the last element to be
-     *            sorted (exclusive)
-     * 
-     * @return a list of events that logs all the important events happening in a
-     *         merge sorting process
+     * @return a list of important events during the sorting process
      * 
      */
     public static <T extends Comparable<T>> List<SortEvent<T>> mergeSort(ArrayList<T> l, int lo,
@@ -188,26 +178,23 @@ public class Sorts {
     }
 
     /***
-     * This method implements quick sort for array lists
+     * Implements quick sort
      * 
-     * @param l,
+     * @param l
      *            an array list
+     * @param lo
+     *            the index of the starting element to be sorted (inclusive)
+     * @param hi
+     *            the index of the last element to be sorted (inclusive)
      * 
-     * @param lo,
-     *            a natural number, which is the index of the starting element to be
-     *            sorted (inclusive)
-     * @param hi,
-     *            a natual number, which is the index of the last element to be
-     *            sorted (inclusive)
-     * 
-     * @return a list of events that logs all the important events happening in a
-     *         quick sorting process
+     * @return a list of important events during the sorting process
      * 
      */
     public static <T extends Comparable<T>> List<SortEvent<T>> quickSort(ArrayList<T> l, int lo,
             int hi) {
         List<SortEvent<T>> events = new ArrayList<SortEvent<T>>();
-
+        
+        // Partitioning
         if (lo < hi) {
             // Partition
             T pivot = l.get(hi);
@@ -223,7 +210,7 @@ public class Sorts {
             swap(l, i + 1, hi);
             events.add(new SwapEvent<>(i + 1, hi));
 
-            // Recursive calls
+            // Calling quickSort recursively
             int pivotId = i + 1;
             List<SortEvent<T>> e1 = quickSort(l, lo, pivotId - 1);
             List<SortEvent<T>> e2 = quickSort(l, pivotId + 1, hi);
@@ -234,9 +221,11 @@ public class Sorts {
     }
 
     /***
-     * Apply a list of sort events to an array list
-     * @param l, an array list
-     * @param events, an list of sort events
+     * Applies a list of sort events to an array list
+     * @param l 
+     *            an array list
+     * @param events
+     *          a list of sort events
      */
     public static <T extends Comparable<T>> void eventSort(ArrayList<T> l,
             List<SortEvent<T>> events) {
