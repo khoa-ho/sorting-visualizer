@@ -24,7 +24,7 @@ public class ArrayPanel extends JPanel {
 
     /**
      * Constructs a new ArrayPanel that renders the given note indices to the
-     * screen.
+     * screen
      * 
      * @param notes
      *            the indices to render
@@ -44,10 +44,10 @@ public class ArrayPanel extends JPanel {
      * the given integer is not a highlighted index, then set the given graphics
      * object's current color to other colors.
      * 
-     * @param g,
+     * @param g
      *            a Graphics object
-     * @param barIndex,
-     *            an elements in this ArrayPanel's notes' indices
+     * @param barIndex
+     *            an index of the ArrayPanel's notes' indices array list
      */
     private void setBarColor(Graphics g, int barIndex) {
         ArrayList<Integer> indices = notes.getNotes();
@@ -60,11 +60,11 @@ public class ArrayPanel extends JPanel {
     }
 
     /***
-     * Render the current ArrayPanel's notes' indices to g. Each index is rendered
+     * Renders the current ArrayPanel's notes' indices to g. Each index is rendered
      * as a vertical bar. The larger the index, the higher the bar. All the bars
      * have the same width.
      * 
-     * @param g,
+     * @param g
      *            a Graphics object
      */
     public void paintComponent(Graphics g) {
@@ -83,9 +83,9 @@ public class ArrayPanel extends JPanel {
     }
 
     /***
-     * Get an ArrayPanel object's notes field.
+     * Gets an ArrayPanel object's notes field
      * 
-     * @return notes, the notes of this ArrayPanel object
+     * @return the notes of this ArrayPanel object
      */
     public NoteIndices getNoteIndices() {
         return notes;
