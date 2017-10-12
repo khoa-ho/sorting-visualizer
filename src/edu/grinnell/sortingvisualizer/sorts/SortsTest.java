@@ -11,9 +11,9 @@ import org.junit.Test;
 import edu.grinnell.sortingvisualizer.events.SortEvent;
 
 /***
- * Test the sorting algorithms and eventSort
+ * Tests the sorting algorithms and eventSort
  * 
- * @author zhanghon
+ * @author zhanghon hokhoa
  *
  */
 public class SortsTest {
@@ -22,8 +22,8 @@ public class SortsTest {
     private final static int MAX = 20;
 
     /***
-     * Make an unsorted integer array list of 20 random integers between 0
-     * (inclusive) and 20 (exclusive)
+     * Makes an unsorted integer array list of 20 random integers between 0
+     * (inclusive) and MAX (exclusive)
      * 
      * @return l, an array list of 20 elements
      */
@@ -37,13 +37,13 @@ public class SortsTest {
     }
 
     /***
-     * Test if an array list is sorted.
+     * Tests if an array list is sorted
      * 
-     * @param l,
+     * @param l
      *            an array list
      * @return true if l is sorted; otherwise returns false
      */
-    private boolean testSortedList(ArrayList<Integer> l) {
+    private boolean isListSorted(ArrayList<Integer> l) {
         for (int i = 0; i < l.size() - 1; i++) {
             if (l.get(i).compareTo(l.get(i + 1)) > 0) {
                 return false;
@@ -53,13 +53,13 @@ public class SortsTest {
     }
 
     /***
-     * Test the given sort algorithm on l.
+     * Tests the given sort algorithm on l
      * 
-     * @param sort,
-     *            a string of a name of a sorting algorithm
-     * @param l,
+     * @param sort
+     *            the name of a sorting algorithm
+     * @param l
      *            an array list
-     * @return a List of SortEvent objects, logging all the important events of the
+     * @return a List of SortEvent objects logging all the important events of the
      *         sorting algorithm
      */
     private static List<SortEvent<Integer>> testSortAlgorithm(String sort, ArrayList<Integer> l) {
@@ -79,26 +79,26 @@ public class SortsTest {
         }
     }
 
-    // Testing on lists with random integers
+    // Tests on a list with random integers in random orders
     public void testCommonCase(String sort) {
         ArrayList<Integer> l = makeUnsortedIntList();
         @SuppressWarnings("unchecked")
         ArrayList<Integer> clone = (ArrayList<Integer>) l.clone();
         List<SortEvent<Integer>> events = testSortAlgorithm(sort, clone);
-        if (testSortedList(clone) == false) {
+        if (isListSorted(clone) == false) {
             fail("Not Sorted");
         }
         Sorts.eventSort(l, events);
         assertEquals(l, clone);
     }
 
-    // Test on empty lists
+    // Test on an empty list
     public void testCornerCase1(String sort) {
         ArrayList<Integer> l1 = new ArrayList<Integer>();
         @SuppressWarnings("unchecked")
         ArrayList<Integer> clone = (ArrayList<Integer>) l1.clone();
         List<SortEvent<Integer>> events = testSortAlgorithm(sort, clone);
-        if (testSortedList(clone) == false) {
+        if (isListSorted(clone) == false) {
             fail("Not Sorted");
         }
         Sorts.eventSort(l1, events);
@@ -112,7 +112,7 @@ public class SortsTest {
         @SuppressWarnings("unchecked")
         ArrayList<Integer> clone = (ArrayList<Integer>) l2.clone();
         List<SortEvent<Integer>> events = testSortAlgorithm(sort, clone);
-        if (testSortedList(clone) == false) {
+        if (isListSorted(clone) == false) {
             fail("Not Sorted");
         }
         Sorts.eventSort(l2, events);
@@ -127,14 +127,14 @@ public class SortsTest {
         @SuppressWarnings("unchecked")
         ArrayList<Integer> clone = (ArrayList<Integer>) l3.clone();
         List<SortEvent<Integer>> events = testSortAlgorithm(sort, clone);
-        if (testSortedList(clone) == false) {
+        if (isListSorted(clone) == false) {
             fail("Not Sorted");
         }
         Sorts.eventSort(l3, events);
         assertEquals(l3, clone);
     }
 
-    // Test on lists in descending order
+    // Tests on a list in descending order
     public void testCornerCase4(String sort) {
         ArrayList<Integer> l4 = new ArrayList<Integer>();
         for (int i = 9; i > 0; i--) {
@@ -143,14 +143,14 @@ public class SortsTest {
         @SuppressWarnings("unchecked")
         ArrayList<Integer> clone = (ArrayList<Integer>) l4.clone();
         List<SortEvent<Integer>> events = testSortAlgorithm(sort, clone);
-        if (testSortedList(clone) == false) {
+        if (isListSorted(clone) == false) {
             fail("Not Sorted");
         }
         Sorts.eventSort(l4, events);
         assertEquals(l4, clone);
     }
-    
-    // Test on already-sorted lists
+
+    // Tests on an already-sorted list
     public void testCornerCase5(String sort) {
         ArrayList<Integer> l5 = new ArrayList<Integer>();
         for (int i = 0; i < 9; i++) {
@@ -159,14 +159,14 @@ public class SortsTest {
         @SuppressWarnings("unchecked")
         ArrayList<Integer> clone = (ArrayList<Integer>) l5.clone();
         List<SortEvent<Integer>> events = testSortAlgorithm(sort, clone);
-        if (testSortedList(clone) == false) {
+        if (isListSorted(clone) == false) {
             fail("Not Sorted");
         }
         Sorts.eventSort(l5, events);
         assertEquals(l5, clone);
     }
-    
-    // Test on lists whose elements only have one value
+
+    // Tests on a list in which all elements have the same value
     public void testCornerCase6(String sort) {
         ArrayList<Integer> l6 = new ArrayList<Integer>();
         for (int i = 0; i < 9; i++) {
@@ -175,14 +175,14 @@ public class SortsTest {
         @SuppressWarnings("unchecked")
         ArrayList<Integer> clone = (ArrayList<Integer>) l6.clone();
         List<SortEvent<Integer>> events = testSortAlgorithm(sort, clone);
-        if (testSortedList(clone) == false) {
+        if (isListSorted(clone) == false) {
             fail("Not Sorted");
         }
         Sorts.eventSort(l6, events);
         assertEquals(l6, clone);
     }
 
-    // Test all the corner cases for a sorting algorithm
+    // Tests all the above corner cases for a sorting algorithm
     public void testCornerCases(String sort) {
         testCornerCase1(sort);
         testCornerCase2(sort);
@@ -226,5 +226,4 @@ public class SortsTest {
         testCommonCase(sort);
         testCornerCases(sort);
     }
-
 }
