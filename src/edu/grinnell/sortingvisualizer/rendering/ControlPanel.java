@@ -39,7 +39,7 @@ public class ControlPanel extends JPanel {
 
     /**
      * Generates a list of sorting events by sorting the given array using the
-     * specified sorting algorithm.
+     * specified sorting algorithm
      * 
      * @param sort
      *            the name of the sorting algorithm to use
@@ -65,7 +65,7 @@ public class ControlPanel extends JPanel {
     }
 
     /**
-     * Generates the named scale.
+     * Generates the named scale
      * 
      * @param name
      *            the name of the scale
@@ -96,7 +96,7 @@ public class ControlPanel extends JPanel {
     private boolean isSorting;
 
     /**
-     * Constructs a new ControlPanel.
+     * Constructs a new ControlPanel
      * 
      * @param notes
      *            the Notes object that this control panel manages
@@ -141,8 +141,8 @@ public class ControlPanel extends JPanel {
                 }
                 isSorting = true;
 
-                // 1. Create the sorting events list
-                // 2. Add in the compare events to the end of the list
+                // 1. Creates the sorting events list
+                // 2. Adds in the compare events to the end of the list
                 ArrayList<Integer> l = panel.getNoteIndices().getNotes();
                 @SuppressWarnings("unchecked")
                 ArrayList<Integer> l1 = (ArrayList<Integer>) l.clone();
@@ -167,10 +167,10 @@ public class ControlPanel extends JPanel {
                         if (index < events.size()) {
                             SortEvent<Integer> e = events.get(index++);
 
-                            // 1. Apply the next sort event.
-                            // 3. Play the corresponding notes denoted by the
-                            // affected indices logged in the event.
-                            // 4. Highlight those affected indices.
+                            // 1. Applies the next sort event
+                            // 2. Plays the corresponding notes denoted by the
+                            // affected indices logged in the event
+                            // 3. Highlights those affected indices
                             e.apply(l);
                             List<Integer> affectedIndices = e.getAffectedIndices();
                             for (int i = 0; i < affectedIndices.size(); i++) {
