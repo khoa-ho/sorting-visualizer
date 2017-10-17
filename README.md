@@ -2,4 +2,4 @@
 
 ### Implements a visualizer and audibilizer for 5 different sorting algorithms
 
-* *Authors:* Hongyuan Zhang and Khoa Ho
+* *Authors:* Khoa Ho and Hongyuan Zhang
